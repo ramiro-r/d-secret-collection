@@ -15,14 +15,14 @@ const typeDefs = gql`
 
   type Query {
     allProducts: [Product]
-    findUserByName(name: String): User
+    user(name: String): User
   }
 `
 
 const resolvers = {
   Query: {
     allProducts: () => products,
-    findUserByName: (_root, {name}) => {
+    user: (_root, {name}) => {
       return users.find(user => {
         return user.name === name
       })

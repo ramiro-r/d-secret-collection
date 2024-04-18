@@ -1,4 +1,4 @@
-import { login } from '../auth'
+import { login } from '../lib/auth'
 import { redirect } from 'next/navigation'
 
 export function LoginForm() {

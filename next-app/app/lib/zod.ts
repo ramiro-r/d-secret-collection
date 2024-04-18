@@ -14,8 +14,3 @@ export type FormState =
       message?: string
     }
   | undefined
-
-export interface User {
-  name: string
-  password: string
-}

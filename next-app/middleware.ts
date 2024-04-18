@@ -1,11 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSession, updateSession } from './app/auth'
+import { getSession, updateSession } from './app/lib/auth'
 
 export async function middleware(request: NextRequest) {
   const session = await getSession()
+  const isOnLoginPage = request.nextUrl.pathname.startsWith('/login')
 
-  if (!session && !request.nextUrl.pathname.startsWith('/login')) {
+  if (!session && !isOnLoginPage) {
     return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  if (session && isOnLoginPage) {
+    await updateSession(request)
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
   return await updateSession(request)

@@ -1,6 +1,9 @@
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
+import { User } from '../types/interfaces'
+import client from '../graphql/apollo-client'
+import { USER_BY_NAME } from './queries'
 
 const key = new TextEncoder().encode(process.env.AUTH_SECRET)
 
@@ -22,17 +25,31 @@ export async function decrypt(input: string): Promise<any> {
 export async function login(formData: FormData) {
   // Verify credentials && get the user
 
-  const user = {
-    name: formData.get('username'),
-    password: formData.get('password'),
+  try {
+    const {
+      data: { user },
+    }: { data: { user: User } } = await client.query({
+      query: USER_BY_NAME,
+      variables: {
+        username: formData.get('username'),
+      },
+    })
+
+    console.log(user)
+
+    if (!user) throw new Error('Your login or password are incorrect')
+
+    //TODO:Validate password
+
+    // Create the session
+    const expires = new Date(Date.now() + 10 * 1000)
+    const session = await encrypt({ user, expires })
+
+    // Save the session in a cookie
+    cookies().set('session', session, { expires, httpOnly: true })
+  } catch (err) {
+    console.log(err)
   }
-
-  // Create the session
-  const expires = new Date(Date.now() + 10 * 1000)
-  const session = await encrypt({ user, expires })
-
-  // Save the session in a cookie
-  cookies().set('session', session, { expires, httpOnly: true })
 }
 
 export async function logout() {
