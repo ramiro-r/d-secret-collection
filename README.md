@@ -8,6 +8,13 @@ npm install
 node index.js
 ```
 
+Create your .env.local file for the auth to work:
+
+```
+#.env.local
+AUTH_SECRET=r2Gdtpd8RtLH0cs/NZS4NyAn75R7m+qKeIZ1GCdoWFk=
+```
+
 Then, on another terminal install and launch the Next development server
 
 ```bash
