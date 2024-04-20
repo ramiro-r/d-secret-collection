@@ -4,14 +4,15 @@ import { getSession, updateSession } from './app/lib/auth'
 export async function middleware(request: NextRequest) {
   const session = await getSession()
   const isOnLoginPage = request.nextUrl.pathname.startsWith('/login')
+  const isOnHomePage = request.nextUrl.pathname === '/'
 
   if (!session && !isOnLoginPage) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  if (session && isOnLoginPage) {
+  if (session && (isOnHomePage || isOnLoginPage)) {
     await updateSession(request)
-    return NextResponse.redirect(new URL('/', request.url))
+    return NextResponse.redirect(new URL('/collection', request.url))
   }
 
   return await updateSession(request)

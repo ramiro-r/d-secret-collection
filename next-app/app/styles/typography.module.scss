@@ -1,0 +1,27 @@
+$size-sm: 0.875rem;
+$size-m: 1.5rem;
+$size-l: 2rem;
+$size-xl: 2.25rem;
+
+$light: 200;
+$normal: 400;
+
+@mixin text-sm() {
+  font-size: $size-sm;
+  line-height: 1.25rem;
+}
+
+@mixin text-m() {
+  font-size: $size-m;
+  line-height: 2rem;
+}
+
+@mixin text-l() {
+  font-size: $size-l;
+  line-height: 2.5rem;
+}
+
+@mixin text-xl() {
+  font-size: $size-xl;
+  line-height: 2.5rem;
+}

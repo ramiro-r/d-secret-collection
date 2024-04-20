@@ -1,0 +1,74 @@
+@import '~~/styles/responsive.module.scss';
+@import '~~/styles/typography.module.scss';
+@import '~~/styles/colors.module.scss';
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &_logo {
+    margin-top: 49px;
+
+    @include desktop {
+      margin-top: 82px;
+    }
+  }
+
+  &_imageContainer {
+    margin-top: 75px;
+    width: 585px;
+    height: 814px;
+    position: relative;
+
+    &_image {
+      transform: rotateY(-180deg);
+    }
+
+    @include tablet {
+      position: absolute;
+      margin-top: 0;
+      top: 0;
+      right: -264px;
+    }
+
+    @include desktop {
+      width: 1113px;
+      height: 1548px;
+      position: absolute;
+      top: 53px;
+      right: -434px;
+    }
+  }
+
+  &_welcome {
+    z-index: 1;
+    margin-top: 134px;
+    transform: translateX(33px);
+    align-self: flex-start;
+    @include text-l;
+    font-weight: $normal;
+
+    p {
+      &:first-of-type {
+        color: $cl-gray;
+      }
+
+      &:last-of-type {
+        transform: translateX(30px);
+        @include text-m;
+      }
+    }
+
+    @include tablet {
+      margin-top: 122px;
+      transform: translateX(70px);
+    }
+
+    @include desktop {
+      margin-top: 160px;
+      transform: translateX(220px);
+    }
+  }
+}

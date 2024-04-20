@@ -4,7 +4,14 @@ import { products, users } from "./data.js"
 const typeDefs = gql`
 
   type Product {
-    id: ID!
+    sku: ID!
+    name: String,
+    description: String,
+    detail: String,
+    categories: [String],
+    media: String,
+    gender: String,
+    price: String
   }
 
   type User {

@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { User } from '../types/interfaces'
 import client from '../graphql/apollo-client'
 import { USER_BY_NAME } from './queries'
+import bcryptjs from 'bcryptjs'
 
 const key = new TextEncoder().encode(process.env.AUTH_SECRET)
 
@@ -11,7 +12,7 @@ export async function encrypt(payload: any) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
-    .setExpirationTime('10 sec from now')
+    .setExpirationTime('10m')
     .sign(key)
 }
 
@@ -22,34 +23,32 @@ export async function decrypt(input: string): Promise<any> {
   return payload
 }
 
-export async function login(formData: FormData) {
-  // Verify credentials && get the user
+export async function login(credentials: { name: string; password: string }) {
+  const {
+    data: { user },
+  }: { data: { user: User } } = await client.query({
+    query: USER_BY_NAME,
+    variables: {
+      username: credentials.name,
+    },
+  })
 
-  try {
-    const {
-      data: { user },
-    }: { data: { user: User } } = await client.query({
-      query: USER_BY_NAME,
-      variables: {
-        username: formData.get('username'),
-      },
-    })
+  if (!user) throw new Error('error validating user')
 
-    console.log(user)
+  //TODO:Validate password
+  const isPasswordValid = await bcryptjs.compare(
+    credentials.password,
+    user.password,
+  )
 
-    if (!user) throw new Error('Your login or password are incorrect')
+  if (!isPasswordValid) throw new Error('error validating user')
 
-    //TODO:Validate password
+  // Create the session
+  const expires = new Date(Date.now() + 60 * 10000)
+  const session = await encrypt({ user, expires })
 
-    // Create the session
-    const expires = new Date(Date.now() + 10 * 1000)
-    const session = await encrypt({ user, expires })
-
-    // Save the session in a cookie
-    cookies().set('session', session, { expires, httpOnly: true })
-  } catch (err) {
-    console.log(err)
-  }
+  // Save the session in a cookie
+  cookies().set('session', session, { expires, httpOnly: true })
 }
 
 export async function logout() {
