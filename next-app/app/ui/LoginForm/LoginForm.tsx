@@ -1,6 +1,6 @@
 'use client'
 import { useRef, useState } from 'react'
-import authenticate from '~~/lib/auth/actions'
+import authenticate from '@/app/lib/auth/actions'
 import { redirect } from 'next/navigation'
 import styles from './LoginForm.module.scss'
 import cn from 'classnames'
@@ -58,7 +58,7 @@ export function LoginForm() {
           onFocus={handleInputFocus}
         />
       </div>
-      <button className={styles.Form_button} type="submit">
+      <button className={`${styles.Button}`} type="submit">
         LOGIN
       </button>
     </form>

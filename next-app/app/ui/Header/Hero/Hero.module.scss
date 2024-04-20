@@ -1,0 +1,17 @@
+@import '@/app/styles/typography.module.scss';
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 52px;
+
+  h1 {
+    @include text-2xl;
+    font-weight: $w-extra-light;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+}

@@ -1,7 +1,8 @@
-@import '~~/styles/colors.module.scss';
-@import '~~/styles/typography.module.scss';
-@import '~~/styles/responsive.module.scss';
-@import '~~/styles/layers.module.scss';
+@import '@/app/styles/colors.module.scss';
+@import '@/app/styles/typography.module.scss';
+@import '@/app/styles/responsive.module.scss';
+@import '@/app/styles/layers.module.scss';
+@import '@/app/styles/components.module.scss';
 
 .Form {
   display: flex;
@@ -29,7 +30,7 @@
     border-bottom: 1px solid $cl-silver-chalice;
     padding-bottom: 11px;
     @include text-sm;
-    font-weight: $normal;
+    font-weight: $w-normal;
     outline: none;
 
     &__error {
@@ -54,19 +55,6 @@
     }
   }
 
-  &_button {
-    width: 258px;
-    height: 64px;
-    background: linear-gradient(180deg, #1e1e1e 0%, #424242 100%);
-    color: $cl-white;
-    @include text-m;
-    font-weight: $light;
-    border: none;
-    border-radius: 10px;
-    margin-top: 75px;
-    cursor: pointer;
-  }
-
   @include tablet {
     margin-top: 66px;
     transform: translateX(-261px);
@@ -77,4 +65,13 @@
     align-self: flex-start;
     transform: translateX(325px);
   }
+}
+
+.Button {
+  width: 258px;
+  @include text-2xl;
+  font-weight: $w-extra-light;
+  border-radius: 10px;
+  margin-top: 75px;
+  padding: 18px 0;
 }

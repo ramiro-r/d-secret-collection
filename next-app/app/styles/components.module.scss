@@ -1,0 +1,13 @@
+@import '@/app/styles/typography.module.scss';
+@import '@/app/styles/colors.module.scss';
+
+.Button {
+  background: linear-gradient(180deg, $cl-cod-gray 0%, $cl-tundora 100%);
+  color: $cl-white;
+  border: none;
+  border-radius: 20px;
+  font-weight: $w-light;
+  @include text-xl;
+  padding: 25px 0;
+  cursor: pointer;
+}

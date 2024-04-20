@@ -1,6 +1,6 @@
 'use server'
-import { LoginFormSchema } from '~~/lib/auth/zod'
-import { login } from '~~/lib/auth'
+import { LoginFormSchema } from '@/app/lib/auth/zod'
+import { login } from '@/app/lib/auth'
 
 const authenticate = async (formData: FormData) => {
   try {

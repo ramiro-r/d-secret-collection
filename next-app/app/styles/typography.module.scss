@@ -1,27 +1,57 @@
-$size-sm: 0.875rem;
-$size-m: 1.5rem;
-$size-l: 2rem;
-$size-xl: 2.25rem;
+@function rem($sizeInPx) {
+  @return #{$sizeInPx / $base}rem;
+}
+$base: 16px;
+$size-xsm: rem(12px);
+$size-sm: rem(14px);
+$size-base: rem(16px);
+$size-l: rem(20px);
+$size-xl: rem(22px);
+$size-2xl: rem(24px);
+$size-3xl: rem(32px);
+$size-4xl: rem(36px);
 
-$light: 200;
-$normal: 400;
+$w-thin: 100;
+$w-extra-light: 200;
+$w-light: 300;
+$w-normal: 400;
+
+@mixin text-xsm() {
+  font-size: $size-xsm;
+  line-height: rem(14px);
+}
 
 @mixin text-sm() {
   font-size: $size-sm;
   line-height: 1.25rem;
 }
 
-@mixin text-m() {
-  font-size: $size-m;
-  line-height: 2rem;
+@mixin text-base() {
+  font-size: $size-base;
+  line-height: rem(19px);
 }
 
 @mixin text-l() {
   font-size: $size-l;
-  line-height: 2.5rem;
+  line-height: rem(24px);
 }
 
 @mixin text-xl() {
   font-size: $size-xl;
+  line-height: rem(26px);
+}
+
+@mixin text-2xl() {
+  font-size: $size-2xl;
+  line-height: 2rem;
+}
+
+@mixin text-3xl() {
+  font-size: $size-3xl;
+  line-height: 38px;
+}
+
+@mixin text-4xl() {
+  font-size: $size-4xl;
   line-height: 2.5rem;
 }

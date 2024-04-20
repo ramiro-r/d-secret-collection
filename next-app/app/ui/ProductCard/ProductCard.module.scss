@@ -1,0 +1,51 @@
+@import '@/app/styles/colors.module.scss';
+@import '@/app/styles/typography.module.scss';
+@import '@/app/styles/responsive.module.scss';
+
+.Card {
+  position: relative;
+  width: 85vw;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 12px 18px;
+  flex-shrink: 0;
+  margin: 40px 8px 10px;
+
+  &_imageContainer {
+    width: 153px;
+    height: 226px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &__description {
+      @include text-xsm;
+      font-weight: $w-light;
+      font-style: italic;
+      max-width: 45%;
+    }
+
+    &__name {
+      @include text-l;
+      font-weight: $w-thin;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      margin-top: 35px;
+
+      @include desktop {
+        margin-bottom: 19px;
+      }
+    }
+
+    &__price {
+      @include text-base;
+      font-weight: $w-thin;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import Header from '@/app/ui/Header/Header'
+
 export default function NavigationLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,7 @@ export default function NavigationLayout({
 }>) {
   return (
     <>
-      <p>Layout Nav</p>
+      <Header />
       {children}
     </>
   )

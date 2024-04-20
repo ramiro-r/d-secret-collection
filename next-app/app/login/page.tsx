@@ -15,9 +15,9 @@ export default function LoginPage() {
         alt="Dior logo"
       />
       <section className={styles.Main_welcome}>
-        <p>BIENVENUE</p>
-        <p>WELCOME</p>
-        <p>いらっしゃいませ</p>
+        <h2>BIENVENUE</h2>
+        <h2>WELCOME</h2>
+        <h2>いらっしゃいませ</h2>
       </section>
       <LoginForm />
       <div className={styles.Main_imageContainer}>

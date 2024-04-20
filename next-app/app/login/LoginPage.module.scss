@@ -1,6 +1,6 @@
-@import '~~/styles/responsive.module.scss';
-@import '~~/styles/typography.module.scss';
-@import '~~/styles/colors.module.scss';
+@import '@/app/styles/responsive.module.scss';
+@import '@/app/styles/typography.module.scss';
+@import '@/app/styles/colors.module.scss';
 
 .Main {
   display: flex;
@@ -47,17 +47,17 @@
     margin-top: 134px;
     transform: translateX(33px);
     align-self: flex-start;
-    @include text-l;
-    font-weight: $normal;
 
-    p {
+    h2 {
+      @include text-3xl;
+      font-weight: $w-normal;
       &:first-of-type {
         color: $cl-gray;
       }
 
       &:last-of-type {
-        transform: translateX(30px);
-        @include text-m;
+        transform: translateX(81px);
+        @include text-2xl;
       }
     }
 

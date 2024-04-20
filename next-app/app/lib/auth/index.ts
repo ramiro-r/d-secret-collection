@@ -1,9 +1,9 @@
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
-import { User } from '../types/interfaces'
-import client from '../graphql/apollo-client'
-import { USER_BY_NAME } from './queries'
+import { User } from '@/app/lib/types/interfaces'
+import client from '@/app/lib/graphql/apollo-client'
+import { USER_BY_NAME } from '@/app/lib/graphql/queries/user'
 import bcryptjs from 'bcryptjs'
 
 const key = new TextEncoder().encode(process.env.AUTH_SECRET)

@@ -1,0 +1,14 @@
+@import '@/app/styles/components.module.scss';
+
+.Button {
+  position: relative;
+  min-width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  &_icon {
+    position: absolute;
+    right: 32px;
+  }
+}
