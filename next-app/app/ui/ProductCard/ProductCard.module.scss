@@ -29,6 +29,7 @@
       font-weight: $w-light;
       font-style: italic;
       max-width: 45%;
+      color: $cl-tundora;
     }
 
     &__name {
@@ -37,15 +38,67 @@
       text-transform: uppercase;
       margin-bottom: 5px;
       margin-top: 35px;
-
-      @include desktop {
-        margin-bottom: 19px;
-      }
     }
 
     &__price {
       @include text-base;
       font-weight: $w-thin;
+    }
+  }
+
+  @include tablet {
+    margin-top: 85px;
+    padding-right: 40px;
+
+    &_imageContainer {
+      width: 334px;
+      height: 493px;
+    }
+
+    &_content {
+      &__description {
+        @include text-base;
+        margin-top: 117px;
+        max-width: 298px;
+      }
+
+      &__name {
+        @include text-3xl;
+        margin-top: 145px;
+      }
+
+      &__price {
+        @include text-l;
+      }
+    }
+  }
+
+  @include desktop {
+    margin-top: 0;
+    width: 50vw;
+    padding: 0 40px 21px 40px;
+
+    &_imageContainer {
+      width: 334px;
+      height: 493px;
+    }
+
+    &_content {
+      &__description {
+        @include text-base;
+        margin-top: 132px;
+        max-width: 335px;
+      }
+
+      &__name {
+        @include text-3xl;
+        margin-top: 145px;
+        margin-bottom: 19px;
+      }
+
+      &__price {
+        @include text-l;
+      }
     }
   }
 }

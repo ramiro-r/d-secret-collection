@@ -1,21 +1,25 @@
 import { gql } from '@apollo/client'
+import { Product } from '@/app/lib/types/interfaces'
 
-export const ALL_PRODUCTS = gql`
-  query Query {
-    products {
+export type ProductsQuery = {
+  products: Product[]
+}
+
+export const GET_PRODUCTS = gql`
+  query ($sort: String, $categories: [Int], $gender: String) {
+    products(sort: $sort, categories: $categories, gender: $gender) {
       sku
       name
-      gender
+      price
+      formattedPrice
+      categories {
+        name
+      }
+      description
+      detail
       media {
         src
         alt
-      }
-      price
-      detail
-      description
-      categories {
-        id
-        name
       }
     }
   }

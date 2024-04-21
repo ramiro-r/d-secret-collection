@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 import { User } from '@/app/lib/types/interfaces'
-import client from '@/app/lib/graphql/apollo-client'
+import client, { getClient } from '@/app/lib/graphql/apollo-client'
 import { USER_BY_NAME } from '@/app/lib/graphql/queries/user'
 import bcryptjs from 'bcryptjs'
 
@@ -24,6 +24,7 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function login(credentials: { name: string; password: string }) {
+  const client = getClient()
   const {
     data: { user },
   }: { data: { user: User } } = await client.query({
@@ -44,7 +45,7 @@ export async function login(credentials: { name: string; password: string }) {
   if (!isPasswordValid) throw new Error('error validating user')
 
   // Create the session
-  const expires = new Date(Date.now() + 60 * 10000)
+  const expires = new Date(Date.now() + 60 * 1000)
   const session = await encrypt({ user, expires })
 
   // Save the session in a cookie
@@ -68,7 +69,7 @@ export async function updateSession(request: NextRequest) {
 
   // Refresh the session so it doesn't expire
   const parsed = await decrypt(session)
-  parsed.expires = new Date(Date.now() + 10 * 1000)
+  parsed.expires = new Date(Date.now() + 60 * 1000)
   const res = NextResponse.next()
   res.cookies.set({
     name: 'session',

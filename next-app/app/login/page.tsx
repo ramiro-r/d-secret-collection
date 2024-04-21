@@ -25,6 +25,7 @@ export default function LoginPage() {
           src={loginImage}
           className={styles.Main_imageContainer_image}
           fill
+          priority
           alt="Eiffel tower draw by hand picture"
         />
       </div>

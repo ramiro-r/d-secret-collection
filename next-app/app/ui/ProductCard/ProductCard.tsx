@@ -17,7 +17,7 @@ export default function ProductCard({ product }: CardProps) {
           {product.description}
         </p>
         <h3 className={styles.Card_content__name}>{product.name}</h3>
-        <p className={styles.Card_content__price}>{product.price}</p>
+        <p className={styles.Card_content__price}>{product.formattedPrice}</p>
       </div>
     </div>
   )

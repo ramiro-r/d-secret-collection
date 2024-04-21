@@ -5,7 +5,9 @@ import keyIcon from '@/public/img/icons/key.svg'
 export default function Hero() {
   return (
     <div className={styles.Container}>
-      <Image src={keyIcon} alt="Dior secret collection key" />
+      <div className={styles.Container_image}>
+        <Image src={keyIcon} fill alt="Dior secret collection key" />
+      </div>
       <h1>The secret collection</h1>
     </div>
   )

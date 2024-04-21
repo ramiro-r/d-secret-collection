@@ -15,6 +15,7 @@ $w-thin: 100;
 $w-extra-light: 200;
 $w-light: 300;
 $w-normal: 400;
+$w-bold: 600;
 
 @mixin text-xsm() {
   font-size: $size-xsm;
@@ -23,7 +24,7 @@ $w-normal: 400;
 
 @mixin text-sm() {
   font-size: $size-sm;
-  line-height: 1.25rem;
+  line-height: rem(16px);
 }
 
 @mixin text-base() {

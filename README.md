@@ -32,7 +32,7 @@ Test Users:
 
 ```
 user: test / pass: 1234
-user: ramiro / pass: dior
+user: ramiro / pass: Dior
 ```
 
 

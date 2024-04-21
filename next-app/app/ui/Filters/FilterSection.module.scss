@@ -1,0 +1,10 @@
+@import '@/app/styles/responsive.module.scss';
+
+.Section {
+  margin-bottom: 26px;
+  width: 100%;
+
+  @include desktop {
+    margin-bottom: 0;
+  }
+}

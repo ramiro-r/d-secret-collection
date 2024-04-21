@@ -1,0 +1,42 @@
+@import '@/app/styles/typography.module.scss';
+@import '@/app/styles/colors.module.scss';
+@import '@/app/styles/responsive.module.scss';
+
+.Toggle {
+  display: flex;
+  align-items: center;
+  &:not(&__large):not(:last-of-type) {
+    margin-bottom: 10px;
+  }
+
+  &__large {
+    margin-bottom: 0;
+  }
+
+  &_button {
+    background: none;
+    border: 1px solid transparent;
+    @include text-sm;
+    font-weight: $w-light;
+    margin-left: 5px;
+    text-transform: uppercase;
+    padding: 4px 0;
+
+    &__large {
+      @include text-base;
+
+      @include tablet {
+        @include text-l;
+      }
+
+      @include desktop {
+        @include text-l;
+      }
+    }
+
+    &__active {
+      font-weight: $w-bold;
+      border-bottom-color: $cl-black;
+    }
+  }
+}

@@ -13,12 +13,14 @@ type Product {
     categories: [Category],
     media: Media,
     gender: String!,
-    price: String!
+    price: Int!,
+    formattedPrice: String
   }
 
   type Category {
     id: ID!,
     name: String!
+    icon: Media
   }
 
   type User {
@@ -28,7 +30,7 @@ type Product {
   }
 
   type Query {
-    products: [Product]
+    products(gender: String, categories: [Int], sort: String): [Product]
     categories: [Category]
     user(name: String): User
   }

@@ -11,7 +11,6 @@ export async function middleware(request: NextRequest) {
   }
 
   if (session && (isOnHomePage || isOnLoginPage)) {
-    await updateSession(request)
     return NextResponse.redirect(new URL('/collection', request.url))
   }
 

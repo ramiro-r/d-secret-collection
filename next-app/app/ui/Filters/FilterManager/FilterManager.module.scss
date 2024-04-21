@@ -1,0 +1,54 @@
+@import '@/app/styles/colors.module.scss';
+@import '@/app/styles/layers.module.scss';
+@import '@/app/styles/responsive.module.scss';
+
+.Filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 67px;
+  margin-bottom: 19px;
+  width: 100%;
+
+  @include tablet {
+    justify-content: flex-end;
+  }
+
+  @include desktop {
+    justify-content: flex-end;
+    margin-top: -53px;
+    padding: 0 172px;
+  }
+
+  &_group {
+    display: flex;
+    flex-direction: column;
+
+    &:last-child:not(:first-of-type) {
+      margin-left: 15%;
+
+      @include desktop {
+        margin-left: 72px;
+      }
+    }
+  }
+
+  &_modalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+      align-items: flex-end;
+    }
+
+    @include desktop {
+      align-items: flex-end;
+    }
+  }
+
+  &_arrow {
+    position: absolute;
+    top: 13px;
+  }
+}

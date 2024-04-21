@@ -1,5 +1,6 @@
 @import '@/app/styles/typography.module.scss';
 @import '@/app/styles/colors.module.scss';
+@import '@/app/styles/responsive.module.scss';
 
 .Button {
   background: linear-gradient(180deg, $cl-cod-gray 0%, $cl-tundora 100%);
@@ -10,4 +11,16 @@
   @include text-xl;
   padding: 25px 0;
   cursor: pointer;
+
+  @include tablet {
+    @include text-3xl;
+    padding: 44px 0;
+    border-radius: 46px;
+  }
+
+  @include desktop {
+    @include text-3xl;
+    padding: 44px 0;
+    border-radius: 46px;
+  }
 }

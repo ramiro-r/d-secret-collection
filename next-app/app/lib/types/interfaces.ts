@@ -17,5 +17,18 @@ export interface Product {
   categories: string[]
   media: Media
   gender: string
-  price: string
+  price: number
+  formattedPrice: string
+}
+
+export interface Category {
+  id: number
+  name: string
+  icon: Media
+}
+
+export interface CollectionPageParams {
+  categories?: string
+  gender?: string
+  sort?: string
 }

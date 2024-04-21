@@ -1,0 +1,26 @@
+@import '@/app/styles/colors.module.scss';
+@import '@/app/styles/layers.module.scss';
+@import '@/app/styles/responsive.module.scss';
+
+.Modal {
+  display: flex;
+  padding: 10% 10% 5%;
+  border: 1px solid $cl-mercury;
+  border-radius: 5px;
+  background-color: $cl-alabaster;
+  position: absolute;
+  width: 80%;
+  z-index: $z-10;
+
+  @include tablet {
+    width: auto;
+    padding: 59px 172px 25px 48px;
+    margin-right: 50px;
+  }
+
+  @include desktop {
+    width: auto;
+    padding: 59px 172px 25px 48px;
+    margin-right: 50px;
+  }
+}

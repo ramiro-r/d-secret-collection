@@ -8,7 +8,9 @@ export default function Header() {
   return (
     <>
       <nav className={styles.Nav}>
-        <Image src={logo} width={98} height={28} alt="Dior logo" />
+        <div className={styles.Nav_image}>
+          <Image src={logo} fill alt="Dior logo" />
+        </div>
         <Cart />
       </nav>
       <Hero />

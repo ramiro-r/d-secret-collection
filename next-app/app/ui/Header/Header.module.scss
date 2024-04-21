@@ -1,5 +1,22 @@
+@import '@/app/styles/responsive.module.scss';
+
 .Nav {
   display: flex;
   justify-content: space-between;
   padding: 22px 21px 41px;
+
+  &_image {
+    position: relative;
+    width: 98px;
+    height: 28px;
+
+    @include desktop {
+      width: 153px;
+      height: 43px;
+    }
+  }
+
+  @include desktop {
+    padding: 56px 73px 0;
+  }
 }

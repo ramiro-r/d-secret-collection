@@ -1,7 +1,12 @@
+@import '@/app/styles/responsive.module.scss';
+
 .Container {
   position: relative;
   width: 100%;
-  overflow-x: scroll;
+
+  @include desktop {
+    padding-top: 70px;
+  }
 
   &_actions {
     display: flex;
@@ -12,14 +17,25 @@
 
   &_slides {
     display: flex;
-    width: calc(85vw * 3);
 
-    & div:first-child {
+    & > div:first-child {
       margin-left: 5vw;
     }
 
-    & div:last-child {
+    & > div:last-child {
       margin-right: 5vw;
+    }
+  }
+
+  @include desktop {
+    &_slides {
+      & > div:first-child {
+        margin-left: 26vw;
+      }
+
+      & > div:last-child {
+        margin-right: 26vw;
+      }
     }
   }
 }

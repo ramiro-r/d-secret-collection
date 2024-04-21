@@ -1,4 +1,5 @@
 @import '@/app/styles/typography.module.scss';
+@import '@/app/styles/responsive.module.scss';
 
 .Container {
   display: flex;
@@ -6,6 +7,22 @@
   align-items: center;
   width: 100%;
   margin-bottom: 52px;
+
+  @include desktop {
+    margin-bottom: 0;
+    transform: translateY(-15%);
+  }
+
+  &_image {
+    position: relative;
+    width: 20px;
+    height: 44px;
+
+    @include desktop {
+      width: 35px;
+      height: 76px;
+    }
+  }
 
   h1 {
     @include text-2xl;

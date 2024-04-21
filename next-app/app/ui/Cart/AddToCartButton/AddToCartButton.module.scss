@@ -7,8 +7,32 @@
   align-items: center;
   justify-content: center;
   margin-top: 80px;
+
   &_icon {
     position: absolute;
     right: 32px;
+
+    @include tablet {
+      width: 65px;
+      height: 65px;
+      right: 70px;
+    }
+
+    @include desktop {
+      width: 65px;
+      height: 65px;
+      right: 70px;
+    }
+  }
+
+  @include tablet {
+    min-width: unset;
+    width: 70%;
+  }
+
+  @include desktop {
+    min-width: unset;
+    width: 586px;
+    margin: 43px 0;
   }
 }
