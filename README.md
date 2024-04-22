@@ -5,10 +5,12 @@ First, install and run the Apollo server:
 ```bash
 cd apollo-server
 npm install
-node index.js
+npm run start
 ```
 
-Create your .env.local file for the auth and client to work:
+For the Next app:
+
+Create your .env.local file in the root of the next-app, for the auth and client to work:
 
 ```
 #.env.local

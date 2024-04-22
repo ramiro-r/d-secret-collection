@@ -5,6 +5,9 @@
   "main": "index.js",
   "type": "module",
   "license": "ISC",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "apollo-server": "^3.13.0",
     "graphql": "^16.8.1"

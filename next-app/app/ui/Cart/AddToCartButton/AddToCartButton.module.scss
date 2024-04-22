@@ -7,6 +7,13 @@
   align-items: center;
   justify-content: center;
   margin-top: 80px;
+  transition: all 0.5s ease-out;
+
+  &:hover {
+    background: $cl-white;
+    color: $cl-mine-shaft;
+    transform: scale(1.1);
+  }
 
   &_icon {
     position: absolute;
