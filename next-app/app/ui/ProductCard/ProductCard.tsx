@@ -1,9 +1,10 @@
 import { Product } from '@/app/lib/types/interfaces'
 import styles from './ProductCard.module.scss'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion, useAnimate } from 'framer-motion'
 import cn from 'classnames'
 import { useMediaQuery } from '@react-hook/media-query'
+import { useEffect, useState } from 'react'
 
 interface CardProps {
   product: Product
@@ -16,13 +17,14 @@ export default function ProductCard({ product, isActive }: CardProps) {
   const imageClass = cn({
     [styles.Card_imageContainer__gray]: !isActive && !isMobileOrTablet,
   })
+  const scaleValue = 0.65
 
   return (
     <motion.div
       className={styles.Card}
-      initial={false}
+      initial={{ scale: shouldAnimate ? 1 : scaleValue, opacity: 0 }}
       animate={{
-        scale: shouldAnimate ? 1 : 0.65,
+        scale: shouldAnimate ? 1 : scaleValue,
         opacity: shouldAnimate ? 1 : 0.1,
         transformOrigin: 'bottom center',
       }}
@@ -41,7 +43,7 @@ export default function ProductCard({ product, isActive }: CardProps) {
       </div>
       <div className={styles.Card_content}>
         <motion.p
-          initial={false}
+          initial={{ opacity: 0 }}
           animate={{ opacity: shouldAnimate ? 1 : 0 }}
           className={styles.Card_content__description}
         >

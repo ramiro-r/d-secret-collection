@@ -5,6 +5,7 @@ import {
 } from '@/app/lib/graphql/queries/category'
 import styles from '@/app/ui/Filters/FilterSection.module.scss'
 import FilterManager from './FilterManager/FilterManager'
+import AnimatedWrapper from '../AnimatedWrapper/AnimatedWrapper'
 
 export default async function FilterSection() {
   const {
@@ -14,8 +15,8 @@ export default async function FilterSection() {
   })
 
   return (
-    <section className={styles.Section}>
+    <AnimatedWrapper classNames={styles.Section} fromY={25}>
       <FilterManager categories={categories} />
-    </section>
+    </AnimatedWrapper>
   )
 }
