@@ -1,6 +1,6 @@
 'use client'
 import styles from './Carousel.module.scss'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { motion, AnimatePresence, useAnimate } from 'framer-motion'
 import { Product } from '@/app/lib/types/interfaces'
 import ProductCard from '../ProductCard/ProductCard'

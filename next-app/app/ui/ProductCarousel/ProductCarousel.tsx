@@ -24,7 +24,10 @@ export default async function ProductCarousel({
 
   return (
     <>
-      <Carousel products={products} />
+      <Carousel
+        key={`${params?.gender}_${params?.sort}_${params?.categories?.toString()}`}
+        products={products}
+      />
       <AddToCartButton />
     </>
   )
