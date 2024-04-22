@@ -36,23 +36,9 @@ export default function Carousel({ products }: CarouselProps) {
     setActiveIndex((pv) => pv + 1)
   }
 
-  const [scope, animate] = useAnimate()
-
-  useEffect(() => {
-    animate(
-      'div:first-of-type',
-      {
-        scaleX: [1.2, 1],
-        transformOrigin: 'bottom right',
-      },
-      { duration: 1 },
-    )
-  }, [])
-
   return (
     <div className={styles.Container}>
       <motion.div
-        ref={scope}
         className={styles.Container_slides}
         animate={{
           translateX: `${translateValue}%`,

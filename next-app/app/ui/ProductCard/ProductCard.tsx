@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useAnimate } from 'framer-motion'
 import cn from 'classnames'
 import { useMediaQuery } from '@react-hook/media-query'
 import { useEffect, useState } from 'react'
+import AnimatedWrapper from '../AnimatedWrapper/AnimatedWrapper'
 
 interface CardProps {
   product: Product
@@ -33,24 +34,31 @@ export default function ProductCard({ product, isActive }: CardProps) {
         duration: 0.5,
       }}
     >
-      <div className={styles.Card_imageContainer}>
+      <AnimatedWrapper classNames={styles.Card_imageContainer} fromX={-50}>
         <Image
           className={imageClass}
           src={product.media.src}
           fill
           alt={product.media.alt}
         />
-      </div>
+      </AnimatedWrapper>
+
       <div className={styles.Card_content}>
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: shouldAnimate ? 1 : 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 1,
+          }}
           className={styles.Card_content__description}
         >
           {product.description}
         </motion.p>
-        <h3 className={styles.Card_content__name}>{product.name}</h3>
-        <p className={styles.Card_content__price}>{product.formattedPrice}</p>
+        <AnimatedWrapper fromX={-100}>
+          <h3 className={styles.Card_content__name}>{product.name}</h3>
+          <p className={styles.Card_content__price}>{product.formattedPrice}</p>
+        </AnimatedWrapper>
       </div>
     </motion.div>
   )
