@@ -1,24 +1,83 @@
 'use client'
-import Image from 'next/image'
 import styles from './Carousel.module.scss'
-import nextIcon from '@/public/img/icons/right-arrow-icon.svg'
-import prevIcon from '@/public/img/icons/left-arrow-icon.svg'
+import { useMemo, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Product } from '@/app/lib/types/interfaces'
+import ProductCard from '../ProductCard/ProductCard'
+import { useMediaQuery } from '@react-hook/media-query'
+import CarouselPaginationButton from './CarouselPaginationButton/CarouselPaginationButton'
 
 interface CarouselProps {
-  children: React.ReactNode
+  products: Product[]
 }
 
-export default function Carousel({ children }: CarouselProps) {
+export default function Carousel({ products }: CarouselProps) {
+  const isMobileOrTablet = useMediaQuery('screen and (max-width: 1024px)')
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const isPrevVisible = activeIndex - 1 >= 0
+  const isNextVisible = activeIndex + 1 < products.length
+
+  const translateValue = useMemo(() => {
+    const cardSize = 100 / 3
+    const cardMargin = 1
+    const initialPos = isMobileOrTablet ? cardMargin * 2 : cardSize / 2
+
+    return isMobileOrTablet
+      ? initialPos - (cardSize + cardMargin * 2) * activeIndex
+      : initialPos - cardSize * activeIndex
+  }, [isMobileOrTablet, activeIndex])
+
+  const goToPrev = () => {
+    setActiveIndex((pv) => pv - 1)
+  }
+
+  const goToNext = () => {
+    setActiveIndex((pv) => pv + 1)
+  }
+
   return (
     <div className={styles.Container}>
-      <div className={styles.Container_slides}>{children}</div>
+      <motion.div
+        className={styles.Container_slides}
+        animate={{
+          translateX: `${translateValue}%`,
+        }}
+        initial={false}
+        transition={{ ease: 'easeOut', duration: 0.5 }}
+      >
+        {products.map((product, index) => (
+          <ProductCard
+            isActive={index === activeIndex}
+            key={product.sku}
+            product={product}
+          ></ProductCard>
+        ))}
+      </motion.div>
       <div className={styles.Container_actions}>
-        <button>
-          <Image src={prevIcon} alt="prev item icon" />
-        </button>
-        <button>
-          <Image src={nextIcon} alt="next item icon" />
-        </button>
+        <AnimatePresence>
+          {isPrevVisible && (
+            <CarouselPaginationButton
+              onClick={goToPrev}
+              icon={{
+                src: '/img/icons/left-arrow-icon.svg',
+                alt: 'prev item icon',
+              }}
+            />
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {isNextVisible && (
+            <CarouselPaginationButton
+              onClick={goToNext}
+              icon={{
+                src: '/img/icons/right-arrow-icon.svg',
+                alt: 'right item icon',
+              }}
+              isRight
+            />
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )

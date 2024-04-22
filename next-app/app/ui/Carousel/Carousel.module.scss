@@ -3,9 +3,16 @@
 .Container {
   position: relative;
   width: 100%;
+  overflow: hidden;
+  padding-top: 70px;
+  height: 264px;
+
+  @include tablet {
+    height: 510px;
+  }
 
   @include desktop {
-    padding-top: 70px;
+    height: 510px;
   }
 
   &_actions {
@@ -13,28 +20,25 @@
     position: absolute;
     align-items: center;
     justify-content: space-between;
+    top: 50%;
+    width: 100%;
+    padding: 0 40px;
   }
 
   &_slides {
     display: flex;
+    position: absolute;
 
-    & > div:first-child {
-      margin-left: 5vw;
-    }
+    & > div {
+      flex-shrink: 0;
+      width: 85vw;
 
-    & > div:last-child {
-      margin-right: 5vw;
-    }
-  }
-
-  @include desktop {
-    &_slides {
-      & > div:first-child {
-        margin-left: 26vw;
+      @include tablet {
+        margin: 0 1%;
       }
 
-      & > div:last-child {
-        margin-right: 26vw;
+      @include desktop {
+        width: 50vw;
       }
     }
   }

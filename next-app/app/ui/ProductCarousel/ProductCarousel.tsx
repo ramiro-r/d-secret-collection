@@ -12,7 +12,6 @@ interface ProductCarouselProps {
 export default async function ProductCarousel({
   params,
 }: ProductCarouselProps) {
-  console.log(params)
   const {
     data: { products },
   } = await getClient().query<ProductsQuery>({
@@ -26,11 +25,7 @@ export default async function ProductCarousel({
 
   return (
     <>
-      <Carousel>
-        {products.map((product) => (
-          <ProductCard key={product.sku} product={product}></ProductCard>
-        ))}
-      </Carousel>
+      <Carousel products={products} />
       <AddToCartButton />
     </>
   )

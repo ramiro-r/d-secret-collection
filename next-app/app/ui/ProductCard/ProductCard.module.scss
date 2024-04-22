@@ -4,12 +4,15 @@
 
 .Card {
   position: relative;
-  width: 85vw;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding: 12px 18px;
   flex-shrink: 0;
-  margin: 40px 8px 10px;
+  margin: 0 1%;
+
+  @include desktop {
+    margin: 0;
+  }
 
   &_imageContainer {
     width: 153px;
@@ -17,6 +20,10 @@
     position: absolute;
     bottom: 0;
     left: 0;
+
+    &__gray {
+      filter: saturate(0%);
+    }
   }
 
   &_content {
@@ -47,7 +54,6 @@
   }
 
   @include tablet {
-    margin-top: 85px;
     padding-right: 40px;
 
     &_imageContainer {
@@ -74,7 +80,6 @@
   }
 
   @include desktop {
-    margin-top: 0;
     width: 50vw;
     padding: 0 40px 21px 40px;
 

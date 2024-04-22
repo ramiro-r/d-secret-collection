@@ -9,7 +9,6 @@ export default async function CollectionPage({
 }: {
   searchParams?: CollectionPageParams
 }) {
-  console.log(searchParams)
   return (
     <main className={styles.Page}>
       <FilterSection />

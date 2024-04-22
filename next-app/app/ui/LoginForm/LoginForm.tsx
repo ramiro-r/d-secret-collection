@@ -23,7 +23,7 @@ export function LoginForm() {
     if (!result) {
       redirect('/collection')
     }
-    console.log(result.message)
+
     loginForm.current?.reset()
     setHasError(true)
   }
