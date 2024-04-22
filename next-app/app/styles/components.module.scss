@@ -11,6 +11,14 @@
   @include text-xl;
   padding: 25px 0;
   cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s ease-out;
+
+  &:hover {
+    background: $cl-white;
+    color: $cl-mine-shaft;
+    transform: scale(1.1);
+  }
 
   @include tablet {
     @include text-3xl;

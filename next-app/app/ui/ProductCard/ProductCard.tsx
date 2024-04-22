@@ -1,10 +1,9 @@
 import { Product } from '@/app/lib/types/interfaces'
 import styles from './ProductCard.module.scss'
 import Image from 'next/image'
-import { AnimatePresence, motion, useAnimate } from 'framer-motion'
+import { motion } from 'framer-motion'
 import cn from 'classnames'
 import { useMediaQuery } from '@react-hook/media-query'
-import { useEffect, useState } from 'react'
 import AnimatedWrapper from '../AnimatedWrapper/AnimatedWrapper'
 
 interface CardProps {

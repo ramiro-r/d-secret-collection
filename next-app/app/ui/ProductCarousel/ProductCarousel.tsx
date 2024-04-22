@@ -1,7 +1,6 @@
 import { getClient } from '@/app/lib/graphql/apollo-client'
 import Carousel from '../Carousel/Carousel'
 import AddToCartButton from '../Cart/AddToCartButton/AddToCartButton'
-import ProductCard from '../ProductCard/ProductCard'
 import { GET_PRODUCTS, ProductsQuery } from '@/app/lib/graphql/queries/product'
 import { CollectionPageParams } from '@/app/lib/types/interfaces'
 
