@@ -1,7 +1,6 @@
 @import '@/app/styles/colors.module.scss';
 @import '@/app/styles/typography.module.scss';
 @import '@/app/styles/responsive.module.scss';
-@import '@/app/styles/layers.module.scss';
 @import '@/app/styles/components.module.scss';
 
 .Form {
@@ -10,8 +9,6 @@
   align-items: center;
   align-self: flex-end;
   margin-top: 52px;
-  transform: translateX(-66px);
-  z-index: $z-10;
 
   &_field {
     width: 230px;
@@ -57,13 +54,11 @@
 
   @include tablet {
     margin-top: 66px;
-    transform: translateX(-261px);
   }
 
   @include desktop {
     margin-top: 92px;
     align-self: flex-start;
-    transform: translateX(325px);
   }
 }
 

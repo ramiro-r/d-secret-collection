@@ -1,11 +1,12 @@
 @import '@/app/styles/responsive.module.scss';
 @import '@/app/styles/typography.module.scss';
 @import '@/app/styles/colors.module.scss';
+@import '@/app/styles/layers.module.scss';
 
 .Main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  min-height: 100vh;
   align-items: center;
 
   &_logo {
@@ -42,10 +43,18 @@
     }
   }
 
+  &_form {
+    z-index: $z-10;
+    @include desktop {
+      align-self: flex-start;
+      margin-left: 18vw;
+    }
+  }
+
   &_welcome {
     z-index: 1;
     margin-top: 134px;
-    transform: translateX(33px);
+    margin-left: 8vw;
     align-self: flex-start;
 
     h2 {
@@ -56,19 +65,17 @@
       }
 
       &:last-of-type {
-        transform: translateX(81px);
         @include text-2xl;
       }
     }
 
     @include tablet {
       margin-top: 122px;
-      transform: translateX(70px);
     }
 
     @include desktop {
       margin-top: 160px;
-      transform: translateX(220px);
+      margin-left: 12vw;
     }
   }
 }
